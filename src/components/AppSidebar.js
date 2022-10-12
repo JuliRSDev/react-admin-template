@@ -1,13 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import {CAvatar, CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler, CTableDataCell} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import { CAvatar, CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/react'
 
 import { AppSidebarNav } from './AppSidebarNav'
-
-import { logoNegative } from 'src/assets/brand/logo-negative'
-import { sygnet } from 'src/assets/brand/sygnet'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
@@ -15,7 +11,7 @@ import 'simplebar/dist/simplebar.min.css'
 // sidebar nav config
 import navigation from '../_nav'
 
-import imgCroydon from 'src/assets/images/logo-croydon.png'
+import imgCroydon from 'src/assets/brand/logo-croydon.png'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
@@ -31,7 +27,10 @@ const AppSidebar = () => {
         dispatch({ type: 'set', sidebarShow: visible })
       }}
     >
-      <CSidebarBrand className="d-none d-md-flex" to="/">
+      <CSidebarBrand className="d-none d-md-flex" to="/" style={{
+        background: "white",
+        borderRight: "1px solid rgb(225, 225, 225)"
+      }}>
         <CAvatar className="w-75" src={imgCroydon} />
       </CSidebarBrand>
       <CSidebarNav>

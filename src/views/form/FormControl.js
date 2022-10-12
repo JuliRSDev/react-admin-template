@@ -12,8 +12,10 @@ import {
   CRow,
 } from '@coreui/react'
 import { DocsExample } from 'src/components'
+import { useForm } from "react-hook-form";
 
 const FormControl = () => {
+
   return (
     <CRow>
       <CCol xs={12}>
@@ -36,46 +38,17 @@ const FormControl = () => {
                   <CFormLabel htmlFor="exampleFormControlTextarea1">Example textarea</CFormLabel>
                   <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
                 </div>
+                <div className="col-auto">
+                  <CButton type="submit" className="mb-3">
+                    Confirm
+                  </CButton>
+                </div>
               </CForm>
             </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Sizing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              Set heights using <code>size</code> property like <code>size=&#34;lg&#34;</code> and{' '}
-              <code>size=&#34;sm&#34;</code>.
-            </p>
-            <DocsExample href="forms/form-control#sizing">
-              <CFormInput
-                type="text"
-                size="lg"
-                placeholder="Large input"
-                aria-label="lg input example"
-              />
-              <br />
-              <CFormInput
-                type="text"
-                placeholder="Default input"
-                aria-label="default input example"
-              />
-              <br />
-              <CFormInput
-                type="text"
-                size="sm"
-                placeholder="Small input"
-                aria-label="sm input example"
-              />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
+      {/*<CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Form Control</strong> <small>Disabled</small>
@@ -101,28 +74,6 @@ const FormControl = () => {
                 readOnly
               />
               <br />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Readonly</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              Add the <code>readOnly</code> boolean attribute on an input to prevent modification of
-              the input&#39;s value. Read-only inputs appear lighter (just like disabled inputs),
-              but retain the standard cursor.
-            </p>
-            <DocsExample href="forms/form-control#readonly">
-              <CFormInput
-                type="text"
-                placeholder="Readonly input here..."
-                aria-label="readonly input example"
-                readOnly
-              />
             </DocsExample>
           </CCardBody>
         </CCard>
@@ -222,27 +173,8 @@ const FormControl = () => {
             </DocsExample>
           </CCardBody>
         </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Color</small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="forms/form-control#color">
-              <CFormLabel htmlFor="exampleColorInput">Color picker</CFormLabel>
-              <CFormInput
-                type="color"
-                id="exampleColorInput"
-                defaultValue="#563d7c"
-                title="Choose your color"
-              />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
+      </CCol>*/}
     </CRow>
   )
 }
-
 export default FormControl

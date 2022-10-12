@@ -9,14 +9,14 @@ import {
   CHeaderNav,
   CHeaderToggler,
   CNavLink,
-  CNavItem,
+  CNavItem, CAvatar,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
+import { cilMenu } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
-import { logo } from 'src/assets/brand/logo'
+import imgCroydon from 'src/assets/brand/logo-croydon.png'
 
 const AppHeader = () => {
   const dispatch = useDispatch()
@@ -27,12 +27,12 @@ const AppHeader = () => {
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"
-          onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
+          onClick={ () => dispatch({ type: 'set', sidebarShow: !sidebarShow }) }
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon icon={logo} height={48} alt="Logo" />
+          <CAvatar style={{ width: "150px" }} src={imgCroydon} />
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
