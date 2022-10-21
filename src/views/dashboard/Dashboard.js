@@ -1,35 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 
 import {
-  CAvatar,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CProgress,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
+  CAvatar, CCard, CCardBody, CCardHeader, CCol, CProgress, CRow, CTable,
+  CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow,
 } from '@coreui/react'
+
 import CIcon from '@coreui/icons-react'
+
 import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
-  cilPeople,
+  cibCcAmex, cibCcApplePay, cibCcMastercard, cibCcPaypal, cibCcStripe, cibCcVisa,
+  cifBr, cifEs, cifFr, cifIn, cifPl, cifUs, cilPeople,
 } from '@coreui/icons'
 
 import avatar1 from 'src/assets/images/avatars/1.jpg'
@@ -41,6 +22,7 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 
 const Dashboard = () => {
 
+  const baseURL = 'https://trapirest.croydonjde.com.co/ords/api/croydon/articles/';
   const tableExample = [
     {
       avatar: { src: avatar1, status: 'success' },
@@ -131,6 +113,12 @@ const Dashboard = () => {
       activity: 'Last week',
     },
   ];
+  const [ lines, setLines ] = useState([]);
+
+  useEffect(  () => {
+    /*fetch( `${baseURL}lucot/line` ).then( response => response.json() ).then( (data) => setLines(data) );*/
+    axios.get( `${baseURL}lucot/line` ).then( (response) => setLines(response.data) ).catch( console.log );
+  }, [] );
 
   return (
     <>
@@ -188,6 +176,35 @@ const Dashboard = () => {
                       </CTableDataCell>
                     </CTableRow>
                   ))}
+                </CTableBody>
+              </CTable>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+      <CRow>
+        <CCol xs>
+          <CCard className="mb-4">
+            <CCardHeader>LINES</CCardHeader>
+            <CCardBody>
+              <CTable align="middle" className="mb-0 border" hover responsive>
+                <CTableHead color="light">
+                  <CTableRow>
+                    <CTableHeaderCell className="text-center">CODIGO</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">DESCRIPCIÓN</CTableHeaderCell>
+                  </CTableRow>
+                </CTableHead>
+                <CTableBody>
+                  { lines && lines.map( ( line, index ) => (
+                    <CTableRow v-for="item in tableItems" key={index}>
+                      <CTableDataCell className="text-center">
+                        <div>{line.CODIGO}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{line.DESCRIPCION}</div>
+                      </CTableDataCell>
+                    </CTableRow>
+                  ) ) }
                 </CTableBody>
               </CTable>
             </CCardBody>
